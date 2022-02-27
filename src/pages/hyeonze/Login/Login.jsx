@@ -28,6 +28,10 @@ const Login = () => {
     navigate('/main-hyeonze');
   };
 
+  const goToMainByEnterKey = e => {
+    if (e.key === 'Enter' && isValidatedUser) goToMain();
+  };
+
   // 회원가입시 사용할 로직
   // const signup = () => {
   //   fetch('http://10.58.4.22:8000/users/signup', {
@@ -68,7 +72,7 @@ const Login = () => {
     <div className="login">
       <div id="wrapper">
         <h1>westagram</h1>
-        <form className="login_form">
+        <form className="login_form" onKeyPress={goToMainByEnterKey}>
           <input
             type="text"
             placeholder="전화번호, 사용자 이름 또는 이메일"

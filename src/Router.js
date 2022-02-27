@@ -25,7 +25,7 @@ function Router() {
         <Route path="/main-daeyeong" element={<MainDaeyeong />} />
 
         {/* 현재님 */}
-        <Route path="/login-hyeonze" element={<LoginHyeonze />} />
+        <Route path="" element={<LoginHyeonze />} />
         <Route path="/main-hyeonze" element={<MainHyeonze />} />
 
         {/* 준영님 */}
