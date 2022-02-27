@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { inputId } from '../../../redux/userId';
 import './Login.scss';
 
 const Login = () => {
@@ -25,11 +27,20 @@ const Login = () => {
 
   // 메인으로 이동할 때 로직
   const goToMain = () => {
+    idUpdate(idInput);
     navigate('/main-hyeonze');
   };
 
   const goToMainByEnterKey = e => {
     if (e.key === 'Enter' && isValidatedUser) goToMain();
+  };
+
+  // 리덕스 튜토리얼
+  // const userId = useSelector(store => store.userId);
+  const dispatch = useDispatch();
+
+  const idUpdate = txt => {
+    dispatch(inputId(txt));
   };
 
   // 회원가입시 사용할 로직

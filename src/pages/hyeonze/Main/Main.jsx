@@ -22,7 +22,7 @@ const Main = () => {
         return (
           <Feeds
             key={el.id}
-            userId={el.userId}
+            writer={el.userId}
             profileImg={el.profileImg}
             img={el.img}
             comments={el.comment}

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { AiFillHeart, AiOutlineComment, AiOutlineUpload } from 'react-icons/ai';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { GrBookmark } from 'react-icons/gr';
 import './Feeds.scss';
 import Comments from './Comment/Comments';
 
-export default function Feeds({ userId, profileImg, img, comments }) {
+export default function Feeds({ profileImg, writer, img, comments }) {
   const [commentVal, setCommentVal] = useState(comments);
   let addedCommentVal = [...commentVal];
   const [currInputVal, setCurrInputVal] = useState('');
+  const userId = useSelector(store => store.userId);
 
   const handleInput = e => {
     const { value } = e.target;
@@ -21,7 +23,7 @@ export default function Feeds({ userId, profileImg, img, comments }) {
     if (!currInputVal) return;
     addedCommentVal.push({
       id: addedCommentVal.length + 1,
-      userId: 'userid',
+      userId: userId.userId,
       value: currInputVal,
       time: '방금전',
     });
@@ -41,7 +43,7 @@ export default function Feeds({ userId, profileImg, img, comments }) {
         <div className="top_menu">
           <span>
             <img src={profileImg} alt="프로필" />
-            {userId}
+            {writer}
           </span>
           <span>
             <BiDotsHorizontalRounded />
